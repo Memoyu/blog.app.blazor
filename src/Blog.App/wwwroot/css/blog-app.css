@@ -2,6 +2,19 @@
     font-size: 16px;
 }
 
+.b-index-header {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.b-index-header-container {
+    align-items: center !important;
+}
+
+.m-btn {
+    text-transform: none !important;
+}
+
 /*scrollbar*/
 ::-webkit-scrollbar-track {
     border-radius: 15px;

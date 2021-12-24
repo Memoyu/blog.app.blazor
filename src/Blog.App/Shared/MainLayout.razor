@@ -1,19 +1,14 @@
 ﻿@inherits LayoutComponentBase
+<MApp Light>
+    <header class="b-index-header">
+        <MCard Elevation=0 MaxHeight=60 Class="b-index-header-container">
+            <span>This is Text</span>
+        </MCard>
+    </header>
 
-<PageTitle>Blog.App</PageTitle>
-
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+     <MMain Class="fill-lighten-1" Style="padding-top:60px">
+        <div class="pa-6 max-width">
             @Body
-        </article>
-    </main>
-</div>
+        </div>
+    </MMain>
+</MApp>

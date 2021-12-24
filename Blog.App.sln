@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.App", "Blog.App\Blog.App.csproj", "{A87EB0F0-135F-4251-ACF0-6DE2E5959067}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.App", "src\Blog.App\Blog.App.csproj", "{B3ABF8BA-B610-489C-A65D-9AF17D1242B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{444479C6-02FC-49FA-B222-6E6DED591847}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +16,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A87EB0F0-135F-4251-ACF0-6DE2E5959067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A87EB0F0-135F-4251-ACF0-6DE2E5959067}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A87EB0F0-135F-4251-ACF0-6DE2E5959067}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A87EB0F0-135F-4251-ACF0-6DE2E5959067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3ABF8BA-B610-489C-A65D-9AF17D1242B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3ABF8BA-B610-489C-A65D-9AF17D1242B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3ABF8BA-B610-489C-A65D-9AF17D1242B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3ABF8BA-B610-489C-A65D-9AF17D1242B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
