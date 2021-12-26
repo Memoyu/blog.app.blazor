@@ -1,3 +1,5 @@
+using AspNetCore.SassCompiler;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,6 +11,9 @@ builder.Services.AddMasaBlazor(builder =>
         option.Primary = "#4318FF"
     );
 });
+
+// Ìí¼ÓSass Compiler
+builder.Services.AddSassCompiler();
 
 var app = builder.Build();
 

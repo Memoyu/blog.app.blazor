@@ -1,0 +1,52 @@
+﻿.b-nav-menu {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    &-title {
+        display: inline-block;
+        margin: 0;
+        font-size: $h2-font-size;
+        font-weight: 700;
+        color: $black;
+        line-height: 1.2;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            color: $primary;
+        }
+    }
+
+    &-desc {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 400;
+        color: #666;
+    }
+
+    &-logo {
+        display: block;
+
+        &-img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &-selected{
+        margin-left: 30px !important;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .b-nav-menu {
+        padding: 0;
+        margin-bottom: 32px;
+        background-color: $light;
+
+        &-selected {
+            margin-left: 0 !important;
+        }
+    }
+}

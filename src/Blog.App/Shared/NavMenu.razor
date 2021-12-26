@@ -1,39 +1,76 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Blog.App</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
+﻿@inject NavigationManager Nav
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
+<header class="b-nav-menu">
+    <MContainer Class="d-md-flex">
+        <div class="text-md-start text-center me-md-auto">
+            <span class="b-nav-menu-title">Memoyu</span>
+            <p class="b-nav-menu-desc">知行合一</p>
         </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
+
+        <div>
+            <MMenu OpenOnHover OffsetY Bottom Right CloseOnContentClick="false" ValueChanged="OnOpen" Value="_open" MinWidth="@("auto")" Style="border: 0.5px solid #E9EDF7;box-sizing: border-box;" Class="rounded-2">
+                <ActivatorContent>
+                    <MChip @attributes=context.Attrs Class="ma-2" Color="primary" Outlined>
+                        <MIcon Left>
+                            @_selectedNav.Icon
+                        </MIcon>
+                        @_selectedNav.Title
+                        <MIcon Right class="b-nav-menu-selected">
+                            mdi-chevron-down
+                        </MIcon>
+                    </MChip>
+                </ActivatorContent>
+                <ChildContent>
+                    <MList Class="pb-0" Style="min-width:200px;">
+                        <MListItemGroup>
+                            @foreach (var nav in _navs)
+                            {
+                                <MListItem Dense OnClick="()=>NavigateToFavoriteMenu(nav.Href)" Class="px-4">
+                                    <MListItemAction Class="mr-3">
+                                        <MIcon Size=20 Color="neutral-lighten-3">@nav.Icon</MIcon>
+                                    </MListItemAction>
+                                    <MListItemContent>
+                                        <span Class="text-btn">@nav.Title</span>
+                                    </MListItemContent>
+                                </MListItem>
+                            }
+                        </MListItemGroup>
+                    </MList>
+                </ChildContent>
+            </MMenu>
         </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
-    </nav>
-</div>
+    </MContainer>
+</header>
 
 @code {
-    private bool collapseNavMenu = true;
+    Nav _selectedNav;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    List<Nav> _navs = new List<Nav>
     {
-        collapseNavMenu = !collapseNavMenu;
+    new Nav(1, "", "mdi-file-certificate-outline", "Categories"),
+    new Nav(2, "", "mdi-tag-outline", "Tags"),
+    new Nav(3, "", "mdi-link", "Links"),
+    new Nav(4, "", "mdi-dots-horizontal-circle-outline", "Other"),
+    };
+
+    bool _open;
+
+    protected override void OnInitialized()
+    {
+        _selectedNav = _navs[0];
+    }
+
+
+    void OnOpen(bool open)
+    {
+        _open = open;
+        if (open is true)
+        {
+        }
+    }
+
+    void NavigateToFavoriteMenu(string href)
+    {
+        Nav.NavigateTo(href);
     }
 }
