@@ -4,40 +4,58 @@
     <MContainer Class="d-md-flex">
         <div class="text-md-start text-center me-md-auto">
             <span class="b-nav-menu-title">Memoyu</span>
-            <p class="b-nav-menu-desc">知行合一</p>
+            <div class="b-nav-menu-desc">知行合一</div>
         </div>
 
-        <div>
-            <MMenu OpenOnHover OffsetY Bottom Right CloseOnContentClick="false" ValueChanged="OnOpen" Value="_open" MinWidth="@("auto")" Style="border: 0.5px solid #E9EDF7;box-sizing: border-box;" Class="rounded-2">
-                <ActivatorContent>
-                    <MChip @attributes=context.Attrs Class="ma-2" Color="primary" Outlined>
-                        <MIcon Left>
-                            @_selectedNav.Icon
-                        </MIcon>
-                        @_selectedNav.Title
-                        <MIcon Right class="b-nav-menu-selected">
-                            mdi-chevron-down
-                        </MIcon>
-                    </MChip>
-                </ActivatorContent>
-                <ChildContent>
-                    <MList Class="pb-0" Style="min-width:200px;">
-                        <MListItemGroup>
-                            @foreach (var nav in _navs)
-                            {
-                                <MListItem Dense OnClick="()=>NavigateToFavoriteMenu(nav.Href)" Class="px-4">
-                                    <MListItemAction Class="mr-3">
-                                        <MIcon Size=20 Color="neutral-lighten-3">@nav.Icon</MIcon>
-                                    </MListItemAction>
-                                    <MListItemContent>
-                                        <span Class="text-btn">@nav.Title</span>
-                                    </MListItemContent>
-                                </MListItem>
-                            }
-                        </MListItemGroup>
-                    </MList>
-                </ChildContent>
-            </MMenu>
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="b-nav-menu-items">
+                <MMenu OpenOnHover OffsetY Bottom Right CloseOnContentClick="false" ValueChanged="OnOpen" Value="_open" MinWidth="@("auto")" Style="border: 0.5px solid #E9EDF7;box-sizing: border-box;" Class="rounded-2">
+                    <ActivatorContent>
+                        <MButton Text @attributes=context.Attrs Color="primary">
+                            @_selectedNav.Title
+                            <MIcon Right>
+                                mdi-chevron-down
+                            </MIcon>
+                        </MButton>
+                    </ActivatorContent>
+                    <ChildContent>
+                        <MList Class="pb-0" Style="min-width:200px;">
+                            <MListItemGroup>
+                                @foreach (var nav in _navs)
+                                {
+                                    <MListItem Dense OnClick="()=>NavigateTo(nav)" Class="px-2">
+                                        <MListItemAction Class="mr-3">
+                                            <MIcon Size=20 Color="neutral-lighten-3">@nav.Icon</MIcon>
+                                        </MListItemAction>
+                                        <MListItemContent>
+                                            <span>@nav.Title</span>
+                                        </MListItemContent>
+                                    </MListItem>
+                                }
+                            </MListItemGroup>
+                        </MList>
+                    </ChildContent>
+                </MMenu>
+                <MDivider Vertical Class="mx-2"></MDivider>
+                <MRow Dense >
+                    <MCol>
+                        <MButton Icon Color="black">
+                            <MIcon>mdi-github</MIcon>
+                        </MButton>
+                    </MCol>
+                    <MCol>
+                        <MButton Icon Color="indigo">
+                            <MIcon>mdi-wechat</MIcon>
+                        </MButton>
+                    </MCol>
+                    <MCol>
+                        <MButton Icon Color="green">
+                            <MIcon>mdi-email-outline</MIcon>
+                        </MButton>
+                    </MCol>
+                </MRow>
+                <MDivider Vertical Class="mx-2"></MDivider>
+            </div>
         </div>
     </MContainer>
 </header>
@@ -69,8 +87,9 @@
         }
     }
 
-    void NavigateToFavoriteMenu(string href)
+    void NavigateTo(Nav nav)
     {
-        Nav.NavigateTo(href);
+        _selectedNav = nav;
+        Nav.NavigateTo(nav.Href);
     }
 }
