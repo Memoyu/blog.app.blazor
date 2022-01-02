@@ -9,36 +9,14 @@
 
         <div style="display: flex; flex-direction: column; justify-content: center;">
             <div class="b-nav-menu-items">
-                <MMenu OpenOnHover OffsetY Bottom Right CloseOnContentClick="false" ValueChanged="OnOpen" Value="_open" MinWidth="@("auto")" Style="border: 0.5px solid #E9EDF7;box-sizing: border-box;" Class="rounded-2">
-                    <ActivatorContent>
-                        <MButton Text @attributes=context.Attrs Color="primary">
-                            @_selectedNav.Title
-                            <MIcon Right>
-                                mdi-chevron-down
-                            </MIcon>
-                        </MButton>
-                    </ActivatorContent>
-                    <ChildContent>
-                        <MList Class="pb-0" Style="min-width:200px;">
-                            <MListItemGroup>
-                                @foreach (var nav in _navs)
-                                {
-                                    <MListItem Dense OnClick="()=>NavigateTo(nav)" Class="px-2">
-                                        <MListItemAction Class="mr-3">
-                                            <MIcon Size=20 Color="neutral-lighten-3">@nav.Icon</MIcon>
-                                        </MListItemAction>
-                                        <MListItemContent>
-                                            <span>@nav.Title</span>
-                                        </MListItemContent>
-                                    </MListItem>
-                                }
-                            </MListItemGroup>
-                        </MList>
-                    </ChildContent>
-                </MMenu>
-                <MDivider Vertical Class="mx-2"></MDivider>
-                <MRow Dense >
-                    <MCol>
+                @foreach (var nav in _navs)
+                {
+                    <MButton Text Color="primary" OnClick="() => NavigateTo(nav)" IsActive=@(_selectedNav.Id == nav.Id) Class="mx-2 font-weight-medium">
+                        @nav.Title
+                    </MButton>
+                }
+                <MRow Dense>
+                    <MCol Align="AlignTypes.Center">
                         <MButton Icon Color="black">
                             <MIcon>mdi-github</MIcon>
                         </MButton>
@@ -48,13 +26,7 @@
                             <MIcon>mdi-wechat</MIcon>
                         </MButton>
                     </MCol>
-                    <MCol>
-                        <MButton Icon Color="green">
-                            <MIcon>mdi-email-outline</MIcon>
-                        </MButton>
-                    </MCol>
                 </MRow>
-                <MDivider Vertical Class="mx-2"></MDivider>
             </div>
         </div>
     </MContainer>
@@ -65,10 +37,10 @@
 
     List<Nav> _navs = new List<Nav>
     {
-    new Nav(1, "", "mdi-file-certificate-outline", "Categories"),
-    new Nav(2, "", "mdi-tag-outline", "Tags"),
-    new Nav(3, "", "mdi-link", "Links"),
-    new Nav(4, "", "mdi-dots-horizontal-circle-outline", "Other"),
+    new Nav(1, "", "mdi-file-certificate-outline", "分类"),
+    new Nav(2, "", "mdi-tag-outline", "标签"),
+    new Nav(3, "", "mdi-link", "友链"),
+    new Nav(4, "", "mdi-dots-horizontal-circle-outline", "其他"),
     };
 
     bool _open;
@@ -84,6 +56,7 @@
         _open = open;
         if (open is true)
         {
+
         }
     }
 
