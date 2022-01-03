@@ -1,0 +1,22 @@
+﻿<MFooter Dark Padless>
+<MCard Flat Tile Dark Class="flex">
+        <MCardText Class="indigo" Style="display:flex; padding: 5px;">
+            <strong>Power By .NET6 & Blazor</strong>
+            <MSpacer></MSpacer>
+            @foreach (var icon in _icons)
+            {
+                <MButton Class="mx-4" Dark Icon>
+                    <MIcon Size="24">@icon</MIcon>
+                </MButton>
+            }
+        </MCardText>
+
+        <MCardText Class="indigo py-2 white--text text-center">
+            @($"@{DateTime.Now.Year}") - <strong>Memoyu</strong>
+        </MCardText>
+    </MCard>
+</MFooter>
+
+@code {
+     private string[] _icons = new string[2] { "mdi-github", "mdi-wechat" };
+}

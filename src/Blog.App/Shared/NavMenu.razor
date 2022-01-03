@@ -1,5 +1,9 @@
-﻿@inject NavigationManager Nav
+﻿@inject NavigationManager navigationManager
 
+@{
+    var selectedNav = _navs.FirstOrDefault(n => n.Href is not null && navigationManager.Uri.Contains(n.Href));
+    if(selectedNav is not null) selectedNav.Active = true;
+}
 <header class="b-nav-menu">
     <MContainer Class="d-md-flex">
         <div class="text-md-start text-center me-md-auto">
@@ -11,7 +15,7 @@
             <div class="b-nav-menu-items">
                 @foreach (var nav in _navs)
                 {
-                    <MButton Text Color="primary" OnClick="() => NavigateTo(nav)" IsActive=@(_selectedNav.Id == nav.Id) Class="mx-2 font-weight-medium">
+                    <MButton Text Color="primary" Href=@nav.Href IsActive=@nav.Active Class="mx-2 font-weight-medium">
                         @nav.Title
                     </MButton>
                 }
@@ -33,21 +37,19 @@
 </header>
 
 @code {
-    Nav _selectedNav;
 
     List<Nav> _navs = new List<Nav>
     {
-    new Nav(1, "", "mdi-file-certificate-outline", "分类"),
-    new Nav(2, "", "mdi-tag-outline", "标签"),
-    new Nav(3, "", "mdi-link", "友链"),
-    new Nav(4, "", "mdi-dots-horizontal-circle-outline", "其他"),
+    new Nav(1, "/category", "mdi-file-certificate-outline", "分类"),
+    new Nav(2, "/tag", "mdi-tag-outline", "标签"),
+    new Nav(3, "/link", "mdi-link", "友链"),
+    new Nav(4, "/other", "mdi-dots-horizontal-circle-outline", "其他"),
     };
 
     bool _open;
 
     protected override void OnInitialized()
     {
-        _selectedNav = _navs[0];
     }
 
 
@@ -58,11 +60,5 @@
         {
 
         }
-    }
-
-    void NavigateTo(Nav nav)
-    {
-        _selectedNav = nav;
-        Nav.NavigateTo(nav.Href);
     }
 }
