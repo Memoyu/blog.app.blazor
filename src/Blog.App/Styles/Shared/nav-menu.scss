@@ -7,13 +7,13 @@
         margin: 0;
         font-size: $h2-font-size;
         font-weight: 700;
-        color: $black;
+        color: $black !important;
         line-height: 1.2;
         text-decoration: none;
 
         &:hover,
         &:focus {
-            color: $primary;
+            color: $primary !important;
         }
     }
 
@@ -34,11 +34,10 @@
         }
     }
 
-    &-items{
+    &-items {
         display: flex;
         line-height: 1.5;
     }
-
 }
 
 @media (max-width: 767px) {

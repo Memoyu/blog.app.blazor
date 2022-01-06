@@ -1,0 +1,36 @@
+﻿@page "/post"
+
+<PageTitle>Memoyu</PageTitle>
+<MContainer>
+    文章页
+	 @* @foreach (var item in _shopData.GetPageDatas())
+        {
+            <MCol Md=4 Sm=12>
+                <div class="commodity">
+                    <MCard Class="rounded-4 content">
+                        <MImage Height=260 Contain Src="@item.PictureFile" Class="hover-pointer" @onclick="()=>NavigateToDetails(item.Id)"></MImage>
+                        <MCardText Class="pa-3">
+                            <div class="block-between">
+                                <MRating Value="item.Rating" Size=20 Dense Readonly Length=5 Color="remind" BackgroundColor="remind"></MRating>
+                                <h6>$@item.Price</h6>
+                            </div>
+                            <div class="text-subtitle text-truncate my-1">@item.Name</div>
+                            <div class="text-truncate text-body3 neutral-lighten-2--text">@item.Description</div>
+                        </MCardText>
+                        <div class="block-between text-center">
+                            <div @onclick="()=>item.Favorite=!item.Favorite" class="rounded-bl-xl hover-pointer favorite" style="width:50%;height:56px;line-height: 56px;box-shadow: inset -1px 0px 0px #F0F3FA, inset 0px 0.5px 0px #F0F3FA;border-bottom-left-radius: 20px !important;">
+                                <MIcon Size=24 Color="@(item.Favorite?"error":"neutral")">@(item.Favorite?"mdi-heart":"mdi-heart-outline")</MIcon>
+                            </div>
+                            <div @onclick="NavigateToOrder" class="hover-pointer neutral--text order" style="width:50%;height:56px;line-height: 56px;box-shadow: inset -1px 0px 0px #F0F3FA, inset 0px 0.5px 0px #F0F3FA;border-bottom-right-radius: 20px !important;">
+                                <MIcon Size=24 Class="white-order">mdi-cart-outline</MIcon>
+                            </div>
+                        </div>
+                    </MCard>
+                </div>
+            </MCol>
+        }*@
+</MContainer>
+
+@code{
+    
+}

@@ -1,0 +1,12 @@
+﻿.b-footer-other {
+    display: inline-block;
+    margin: 0;
+    color: $black !important;
+    line-height: 1.2;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        color: $primary !important;
+    }
+}
