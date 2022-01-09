@@ -1,66 +1,52 @@
 ﻿@inject NavigationManager navigationManager
+@inject NavHelper NavHelper
+@*
+    @{
+    var nav = NavHelper.Navs.FirstOrDefault(n => n.Href is not null && navigationManager.Uri.Contains(n.Href));
+    NavHelper.Active(nav);
+    }*@
 
-@{
-	var selectedNav = _navs.FirstOrDefault(n => n.Href is not null && navigationManager.Uri.Contains(n.Href));
-	if (selectedNav is not null) selectedNav.Active = true;
-}
 <header class="b-nav-menu">
-	<MContainer Class="d-md-flex">
-		<div class="text-md-start text-center me-md-auto">
-			<a class="b-nav-menu-title" href="/">Memoyu</a>
-			<div class="b-nav-menu-desc">知行合一</div>
-		</div>
+    <MContainer Class="d-md-flex">
+        <div class="text-md-start text-center me-md-auto">
+            <a class="b-nav-menu-title" onclick=@(()=>NavHelper.NavigateTo("/"))>Memoyu</a>
+            <div class="b-nav-menu-desc">知行合一</div>
+        </div>
 
-		<div style="display: flex; flex-direction: column; justify-content: center;">
-			<div class="b-nav-menu-items">
-				@foreach (var nav in _navs)
-				{
-					<MButton Text Color="primary" Href=@nav.Href IsActive=@nav.Active Class="mx-2 font-weight-medium">
-						@nav.Title
-					</MButton>
-				}
-				<MRow Dense>
-					<MCol Align="AlignTypes.Center">
-						<MButton Icon Color="black">
-							<MIcon>mdi-github</MIcon>
-						</MButton>
-					</MCol>
-					<MCol>
-						<MButton Icon Color="indigo">
-							<MIcon>mdi-wechat</MIcon>
-						</MButton>
-					</MCol>
-				</MRow>
-			</div>
-		</div>
-	</MContainer>
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="b-nav-menu-items">
+                @foreach (var nav in GetNavs())
+                {
+                    <MButton Text Color="primary" OnClick="()=>NavHelper.NavigateTo(nav)" IsActive=@nav.Active Class="mx-2 font-weight-medium">
+                        @nav.Title
+                    </MButton>
+                }
+                <MRow Dense>
+                    <MCol Align="AlignTypes.Center">
+                        <MButton Icon Color="black">
+                            <MIcon>mdi-github</MIcon>
+                        </MButton>
+                    </MCol>
+                    <MCol>
+                        <MButton Icon Color="indigo">
+                            <MIcon>mdi-wechat</MIcon>
+                        </MButton>
+                    </MCol>
+                </MRow>
+            </div>
+        </div>
+    </MContainer>
 </header>
 
 @code {
+    protected override void OnInitialized()
+    {
+        var nav = NavHelper.Navs.FirstOrDefault(n => n.Href is not null && navigationManager.Uri.Contains(n.Href));
+        NavHelper.Active(nav);
+    }
 
-	
-
-	List<Nav> _navs = new List<Nav>
-	{
-		new Nav(1, "/post", "mdi-file-certificate-outline", "文章"),
-		new Nav(2, "/tag", "mdi-tag-outline", "标签"),
-		new Nav(3, "/link", "mdi-link", "友链"),
-		new Nav(4, "/other", "mdi-dots-horizontal-circle-outline", "其他"),
-	};
-
-	bool _open;
-
-	protected override void OnInitialized()
-	{
-	}
-
-
-	void OnOpen(bool open)
-	{
-		_open = open;
-		if (open is true)
-		{
-
-		}
-	}
+    List<NavModel> GetNavs()
+    {
+        return NavHelper.Navs;
+    }
 }

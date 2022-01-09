@@ -1,4 +1,5 @@
 using AspNetCore.SassCompiler;
+using Blog.App.Data.Global;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddMasaBlazor(builder =>
 
 // Ìí¼ÓSass Compiler
 builder.Services.AddSassCompiler();
+
+builder.Services.AddScoped<NavHelper>();
 
 var app = builder.Build();
 

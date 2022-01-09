@@ -1,0 +1,19 @@
+﻿.post-grid {
+    transition: box-shadow ease-in-out 0.3s;
+    // hover item
+    &:hover {
+        box-shadow: 0 0 10rem rgba(#000, 0.1);
+        border-color: #fff;
+
+        .post-grid-link {
+            color: $primary;
+        }
+
+        .post-grid-desc {
+            color: #000;
+        }
+
+        .post-grid-more {
+        }
+    }
+}

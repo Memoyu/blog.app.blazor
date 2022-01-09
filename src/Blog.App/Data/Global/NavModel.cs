@@ -1,8 +1,8 @@
 ﻿namespace Blog.App.Data.Global
 {
-    public class Nav
+    public class NavModel
     {
-        public Nav(int id, string href, string icon, string title)
+        public NavModel(int id, string href, string icon, string title)
         {
             Id = id;
             Href = href;
