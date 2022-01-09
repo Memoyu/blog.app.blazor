@@ -1,6 +1,5 @@
 ﻿@page "/post"
 
-<PageTitle>Post</PageTitle>
 <MContainer>
     <div class="mr-n3">
         <MRow>
@@ -8,7 +7,7 @@
             {
                 <MCol Md=4 Sm=12>
                     <div class="post-grid">
-                        <MCard Class="rounded-4 content">
+                        <MCard Elevation=0 Class="rounded-6 content">
                             <MImage Height=260 Contain Src="@item.ThumbnailUrl" Class="hover-pointer" @onclick="()=>NavigateToDetails(item.Id)"></MImage>
                             <MCardText Class="pa-3">
                                 <div class="text-subtitle text-truncate my-1">@item.Title</div>
