@@ -5,8 +5,8 @@
         <MRow>
             @foreach (var item in _postData.Items)
             {
-                <MCol Md=4 Sm=12>
-                    <div class="post-grid">
+                <MCol Md=12 Sm=12>
+                    <div class="post-grid-item">
                         <MCard Elevation=0 Class="rounded-6 content">
                             <MImage Height=260 Contain Src="@item.ThumbnailUrl" Class="hover-pointer" @onclick="()=>NavigateToDetails(item.Id)"></MImage>
                             <MCardText Class="pa-3">
@@ -22,7 +22,3 @@
         </MRow>
     </div>
 </MContainer>
-
-@code {
-
-}

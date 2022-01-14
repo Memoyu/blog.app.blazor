@@ -1,5 +1,11 @@
-﻿.post-grid {
+﻿
+.post-grid-item {
     transition: box-shadow ease-in-out 0.3s;
+    box-shadow: 0 0 0rem 1px rgba(#000, 0.05);
+    border-radius: $radius-var;
+    border: 1px solid $light;
+    overflow: hidden;
+
     // hover item
     &:hover {
         box-shadow: 0 0 10rem rgba(#000, 0.1);

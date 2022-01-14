@@ -13,6 +13,7 @@
 
 	<ItemGroup>
 		<Folder Include="Pages\Categories\" />
+		<Folder Include="Pages\Posts\新文件夹\" />
 		<Folder Include="wwwroot\css\" />
 	</ItemGroup>
 
