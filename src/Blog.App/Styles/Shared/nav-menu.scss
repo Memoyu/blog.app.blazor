@@ -37,6 +37,10 @@
     &-items {
         display: flex;
         line-height: 1.5;
+
+        &-btn {
+            font-size: $h6-font-size !important;
+        }
     }
 
     .text-subtitle {

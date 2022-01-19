@@ -6,6 +6,34 @@
     border: 1px solid $light;
     overflow: hidden;
 
+    .post-info {
+        padding: 7px;
+        display: flex;
+
+        .post-info-icon {
+            height: 20px !important;
+            width: 20px !important;
+            min-width: 20px !important;
+        }
+
+        .post-info-text {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            padding: 0 7px;
+        }
+
+        &-author {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 100px;
+        }
+
+        &-date {
+            white-space: nowrap;
+        }
+    }
     // hover item
     &:hover {
         box-shadow: 0 0 10rem rgba(#000, 0.1);

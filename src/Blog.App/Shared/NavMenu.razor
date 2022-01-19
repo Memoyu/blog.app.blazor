@@ -17,7 +17,7 @@
             <div class="b-nav-menu-items">
                 @foreach (var nav in GetNavs())
                 {
-                    <MButton Text Color="primary" OnClick="()=>NavHelper.NavigateTo(nav)" IsActive=@nav.Active Class="mx-2 font-weight-medium">
+                    <MButton Text Color="primary" OnClick="()=>NavHelper.NavigateTo(nav)" IsActive=@nav.Active Class="mx-2 font-weight-medium b-nav-menu-items-btn" Style="font-weight:700 !important;">
                         @nav.Title
                     </MButton>
                 }
