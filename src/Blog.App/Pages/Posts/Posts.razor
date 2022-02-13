@@ -1,36 +1,41 @@
 ﻿@page "/post"
 
 <MContainer>
-	<div class="mr-n3">
-		<MRow>
-			@foreach (var item in _postData.Items)
-			{
-				<MCol Md=4 Sm=12>
-					<div class="post-grid-item">
-						<MCard Elevation=0 Class="rounded-6 content">
-							<MImage Height=260 Contain Src="@item.ThumbnailUrl" Class="hover-pointer" @onclick="()=>NavigateToDetails(item.Id)"></MImage>
-							<MCardText Class="pa-3">
-								<div class="text-subtitle text-truncate my-1">@item.Title</div>
-								<div class="text-truncate text-body3 neutral-lighten-2--text">@item.Subtitle</div>
-							</MCardText>
-							<div class="post-info">
-								<MAvatar Class="post-info-icon">
-									<MImage Src="https://cdn.masastack.com/stack/images/website/masa-blazor/jack.png" Alt="Jack"></MImage>
-								</MAvatar>
-								<div class="post-info-text">
-									<div class="post-info-author">Memoyu222222222222222222222</div>
-								</div>
-								<MAvatar Class="post-info-icon">
-									<MIcon Dark Color="indigo">mdi-account-circle</MIcon>
-								</MAvatar>
-								<div class="post-info-text">
-									<div class="post-info-date">2022-01-20 10:30</div>
-								</div>
-							</div>
-						</MCard>
-					</div>
-				</MCol>
-			}
-		</MRow>
-	</div>
+    <div class="mr-n3">
+        <MRow>
+            @foreach (var item in _postData.Items)
+            {
+                <MCol Md=4 Sm=12>
+                    <div class="post-grid-item">
+                        <MCard Elevation=0 Class="rounded-6 content">
+                            <MImage Height=260 Contain Src="@item.ThumbnailUrl" Class="hover-pointer" @onclick="()=>NavigateToDetails(item.Id)"></MImage>
+                            <MCardText Class="pa-3">
+                                <div class="text-subtitle text-truncate my-1">@item.Title</div>
+                                <div class="text-truncate text-body3 neutral-lighten-2--text">@item.Subtitle</div>
+                            </MCardText>
+                            <div class="post-info">
+                                <MAvatar Class="post-info-icon">
+                                    <MImage Src="https://cdn.masastack.com/stack/images/website/masa-blazor/jack.png" Alt="Jack"></MImage>
+                                </MAvatar>
+                                <div class="post-info-text">
+                                    <div class="post-info-author">Memoyu222222222222222222222</div>
+                                </div>
+                                @*	<MAvatar Class="post-info-icon">
+                                    <MIcon Light>mdi-calendar-range</MIcon>
+                                    </MAvatar>*@
+                                <MIcon Light Class="post-info-icon">mdi-calendar-range</MIcon>
+                                <div class="post-info-text">
+                                    <div class="post-info-date">2022-01-20 10:30</div>
+                                </div>
+                            </div>
+                        </MCard>
+                    </div>
+                </MCol>
+            }
+        </MRow>
+    </div>
+    @if (_postData.Total > 0)
+    {
+        <MPagination @bind-Value="_pageIndex" Color="primary" Circle Length=@(_postData.Total / _pageSize) Class="mt-4 elevation-0 ml300"></MPagination>
+    }
 </MContainer>
