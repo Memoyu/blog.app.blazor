@@ -53,7 +53,7 @@ public partial class Posts
 
     private void NavigateToDetails(long id)
     {
-        Nav.NavigateTo($"post/details/{id}");
+        Nav.NavigateTo($"post/detail/{id}");
     }
 }
 

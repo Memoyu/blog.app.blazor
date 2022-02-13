@@ -1,8 +1,52 @@
-﻿@page "/post/details"
-@page "/post/details/{Id}"
+﻿@page "/post/detail"
+@page "/post/detail/{Id}"
 
-<h3>Detail</h3>
+<div class="post">
+    <div class="post-cover">
+        <img class="post-cover-img" src="./images/post-background.jpg" alt="background" aria-hidden="true">
+    </div>
 
-@code {
+    <header class="post-container">
 
-}
+        <h1 class="post-title">测试标题</h1>
+
+        <div class="post-meta d-flex align-items-center">
+            <div class="post-meta-item post-meta-author">
+                <MAvatar Class="post-meta-author-img">
+                    <MImage Src="./images/logo.png" Alt="Jack"></MImage>
+                </MAvatar>
+                <div class="post-meta-author-details">
+                    <span class="post-meta-label">作者</span>
+                    <a class="post-meta-author-name" href="#">Memoyu</a>
+                </div>
+
+                <div class="post-meta-date">
+                    <span class="post-meta-label">发布时间</span>
+                    <time class="post-meta-date-time">2022-02-13 14:25</time>
+                </div>
+            </div>
+
+            @*@if (post.Categories != null && post.Categories.Count > 0)
+                {
+                <div class="post-meta-item post-meta-cats">
+                <span class="post-meta-label">@_localizer["categories"]</span>
+                <ul class="post-meta-cats-list d-flex">
+                @foreach (var cat in post.Categories)
+                {
+                <li class="post-meta-cats-item">
+                <a class="post-meta-cats-link" href="@catUrl/@cat.Content">@cat.Content</a>
+                </li>
+                }
+                </ul>
+                </div>
+                }*@
+
+            <MButton Class="post-meta-btn ma-2 ms-auto"
+                     Icon
+                     Color="primary">
+                <MIcon>mdi-share-variant</MIcon>
+            </MButton>
+        </div>
+    </header>
+
+</div>
