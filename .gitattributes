@@ -1,9 +1,7 @@
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
-*.js linguist-language=csharp
-*.css linguist-language=csharp
-*.html linguist-language=csharp
+* text=auto
 
 ###############################################################################
 # Set default behavior for command prompt diff.
@@ -63,3 +61,4 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+*.razor linguist-language=C#
