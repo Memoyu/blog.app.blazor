@@ -3,6 +3,8 @@ using Blog.App.Data.Global;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var Configuration = builder.Configuration;
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
@@ -17,6 +19,8 @@ builder.Services.AddMasaBlazor(builder =>
 builder.Services.AddSassCompiler();
 
 builder.Services.AddScoped<NavHelper>();
+
+builder.Services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
 var app = builder.Build();
 

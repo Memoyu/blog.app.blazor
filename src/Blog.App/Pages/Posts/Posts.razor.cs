@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Blog.App.Data.Global;
+using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Options;
 
 namespace Blog.App.Pages.Posts;
 
@@ -9,6 +11,9 @@ public partial class Posts
 
     [Inject]
     public NavigationManager Nav { get; set; } = default!;
+
+    [Inject]
+    public IOptions<AppSettings> AppSettings { get; set; } = default!;
 
     protected override void OnInitialized()
     {
@@ -35,6 +40,8 @@ public partial class Posts
                 UserId = "33112476",
             }
         };
+
+        // var a = AppSettings.Value;
 
         _postData.Items = new List<PostDto>();
 
