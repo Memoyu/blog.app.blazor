@@ -6,6 +6,9 @@ namespace Blog.App.Pages.Posts;
 
 public partial class Posts
 {
+    private int _pageIndex;
+    private int _pageSize;
+
     private readonly PostPage _postData = new PostPage();
 
 
@@ -40,22 +43,25 @@ public partial class Posts
                 UserId = "33112476",
             }
         };
+        _pageIndex = 1;
+        _pageSize = 3;
 
         // var a = AppSettings.Value;
 
         _postData.Items = new List<PostDto>();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 9; i++)
         {
             var newD = JsonSerializer.Deserialize<PostDto>(JsonSerializer.Serialize(dto));
             newD.Id = i + 1;
             _postData.Items.Add(newD);
         }
+        _postData.Total = 18;
     }
 
     private void NavigateToDetails(long id)
     {
-        Nav.NavigateTo($"post/details/{id}");
+        Nav.NavigateTo($"post/detail/{id}");
     }
 }
 
